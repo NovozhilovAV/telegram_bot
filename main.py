@@ -9,4 +9,5 @@
 #
 # For a description of the Bot API, see this page: https://core.telegram.org/bots/api
 
-# ЭТОТ ФАИЛ ДУБЛИРУЕТ ФАЙЛ .env
+# import requests
+# данный фаил создан для шпаргалки и копирует фаил  - .env
