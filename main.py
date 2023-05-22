@@ -9,4 +9,4 @@
 #
 # For a description of the Bot API, see this page: https://core.telegram.org/bots/api
 
-import requests
+# ЭТОТ ФАИЛ ДУБЛИРУЕТ ФАЙЛ .env
