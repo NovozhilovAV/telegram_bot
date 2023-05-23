@@ -47,8 +47,8 @@ def get_random_vacancy():
 
 
     return list_of_data_vacancy
-#
 
-list_of_vacancy: list = get_random_vacancy()
-for vac in list_of_vacancy:
-    print(vac)
+if __name__ == '__main__':
+    list_of_vacancy: list = get_random_vacancy()
+    for vac in list_of_vacancy:
+        print(vac)

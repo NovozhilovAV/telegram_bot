@@ -33,11 +33,12 @@ def get_weather_spb() -> list:
             weather_day_list.append(info_weather)
 
         weather_day_list.insert(0, date)
-    return weather_day_list
+        return weather_day_list
 
-for i in get_weather_spb():
-    print(i)
+# for i in get_weather_spb():
+#     print(i)
 
-my_weather: list
-my_weather = get_weather_spb()
-print(my_weather[2])
+if __name__ == '__main__':
+    my_weather: list
+    my_weather = get_weather_spb()
+    print(my_weather[2])
