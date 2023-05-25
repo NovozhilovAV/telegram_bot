@@ -1,4 +1,3 @@
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -36,7 +35,7 @@ def course():
                 'Курс': price_rate
             }
 
-        validated_rows.append(row_dict)
+    validated_rows.append(row_dict)
     return validated_rows
 
 if __name__ == '__main__':
