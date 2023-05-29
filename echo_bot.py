@@ -19,9 +19,46 @@ async def process_start_command(message: Message):
     await message.answer('Привет!\nМеня зовут Эхо-бот!\nНапиши мне что-нибудь')
 
 # Этот хэндлер будет срабатывать на команду "/help"
-@dp.message(Command(commands=['help']))
+@dp.message(Command(commands=['help']))     # реакция на команду help
 async def process_help_command(message: Message):
     await message.answer('Напиши мне что-нибудь и в ответ я пришлю тебе твое сообщение')
+    # используется фун-я message.answer - ответить и ее параметры
+
+# Этот хэндлер будет срабатывать на команду "/weather"
+@dp.message(Command(commands=['weather']))    # реакция на команду weather - погода
+async def get_weather_command(message: Message):
+    weather = get_weather_spb()
+    date = weather[0]
+    night = f'\n{weather[1]["weather_day"]} {weather[1]["temperature"]}, {weather[1]["tooltrip"]}\n'
+    day = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltrip"]}\n'
+    evenin = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltrip"]}\n'
+    await message.answer(date+night+day+evenin)
+
+# Этот хэндлер будет срабатывать на команду "/vacancy"
+@dp.message(Command(commands=['vacancy']))    # реакция на команду vacansy - вакансии python
+async def get_vacancy_command(message: Message):
+    vacancies = get_random_vacancy()
+    text = 'Three random vacanci Python'
+    first_vc = f"Вакансия{vacancies[1]['name']}\nЗарплата{vacancies[1]['salari']}" \
+               f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[1]['url']}\n"
+    second_vc = f"Вакансия{vacancies[2]['name']}\nЗарплата{vacancies[2]['salari']}" \
+                f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[2]['url']}\n"
+    third_vc = f"Вакансия{vacancies[3]['name']}\nЗарплата{vacancies[3]['salari']}" \
+               f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[3]['url']}\n"
+
+    await message.answer(first_vc)
+    await message.answer(second_vc)
+    await message.answer(third_vc)
+
+# Этот хэндлер будет срабатывать на команду "/vacancy"
+@dp.message(Command(commands=['exchange']))    # реакция на команду exchange - курс валют
+async def get_vacancy_command(message: Message):
+    exchange = course()
+    first_ex = f"Цифр.код{exchange[1]['code_num']}\nБукв.код{exchange[1]['code_list']}" \
+               f"\nВалюта{exchange[1]['name_rate']}\nЕденицы{exchange[1]['counte_rate']}" \
+               f"\nКурс{exchange[1]['prise_rate']}"
+
+    await message.answer(first_ex)
 
 # Этот хэндлер будет срабатывать на отправку боту фото
 @dp.message(F.photo)

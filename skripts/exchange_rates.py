@@ -39,5 +39,6 @@ def course():
     return validated_rows
 
 if __name__ == '__main__':
-    for item in course():
-        print(item)
+    print(course())
+    # for item in course():
+    #     print(item)
