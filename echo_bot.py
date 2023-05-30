@@ -29,9 +29,9 @@ async def process_help_command(message: Message):
 async def get_weather_command(message: Message):
     weather = get_weather_spb()
     date = weather[0]
-    night = f'\n{weather[1]["weather_day"]} {weather[1]["temperature"]}, {weather[1]["tooltrip"]}\n'
-    day = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltrip"]}\n'
-    evenin = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltrip"]}\n'
+    night = f'\n{weather[1]["weather_day"]} {weather[1]["temperature"]}, {weather[1]["tooltip"]}\n'
+    day = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}\n'
+    evenin = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltip"]}\n'
     await message.answer(date+night+day+evenin)
 
 # Этот хэндлер будет срабатывать на команду "/vacancy"
@@ -39,11 +39,11 @@ async def get_weather_command(message: Message):
 async def get_vacancy_command(message: Message):
     vacancies = get_random_vacancy()
     text = 'Three random vacanci Python'
-    first_vc = f"Вакансия{vacancies[1]['name']}\nЗарплата{vacancies[1]['salari']}" \
+    first_vc = f"Вакансия{vacancies[1]['name']}\nЗарплата{vacancies[1]['salary']}" \
                f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[1]['url']}\n"
-    second_vc = f"Вакансия{vacancies[2]['name']}\nЗарплата{vacancies[2]['salari']}" \
+    second_vc = f"Вакансия{vacancies[2]['name']}\nЗарплата{vacancies[2]['salary']}" \
                 f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[2]['url']}\n"
-    third_vc = f"Вакансия{vacancies[3]['name']}\nЗарплата{vacancies[3]['salari']}" \
+    third_vc = f"Вакансия{vacancies[3]['name']}\nЗарплата{vacancies[3]['salary']}" \
                f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[3]['url']}\n"
 
     await message.answer(first_vc)
