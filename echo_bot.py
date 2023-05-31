@@ -29,34 +29,41 @@ async def process_help_command(message: Message):
 async def get_weather_command(message: Message):
     weather = get_weather_spb()
     date = weather[0]
-    night = f'\n{weather[1]["weather_day"]} {weather[1]["temperature"]}, {weather[1]["tooltip"]}\n'
-    day = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}\n'
-    evenin = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltip"]}\n'
-    await message.answer(date+night+day+evenin)
+    night = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}\n'
+    morning = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltip"]}\n'
+    day = f'\n{weather[4]["weather_day"]} {weather[4]["temperature"]}, {weather[4]["tooltip"]}\n'
+    evening = f'\n{weather[5]["weather_day"]} {weather[5]["temperature"]}, {weather[5]["tooltip"]}\n'
+    await message.answer(date+night+morning+day+evening)
 
 # Этот хэндлер будет срабатывать на команду "/vacancy"
 @dp.message(Command(commands=['vacancy']))    # реакция на команду vacansy - вакансии python
 async def get_vacancy_command(message: Message):
     vacancies = get_random_vacancy()
     text = 'Three random vacanci Python'
-    first_vc = f"Вакансия{vacancies[1]['name']}\nЗарплата{vacancies[1]['salary']}" \
-               f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[1]['url']}\n"
-    second_vc = f"Вакансия{vacancies[2]['name']}\nЗарплата{vacancies[2]['salary']}" \
-                f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[2]['url']}\n"
-    third_vc = f"Вакансия{vacancies[3]['name']}\nЗарплата{vacancies[3]['salary']}" \
-               f"\nДата публикации{vacancies[1]['created_at']}\nСсылка{vacancies[3]['url']}\n"
+    first_vc = f"Вакансия {vacancies[1]['name']}\nЗарплата {vacancies[1]['salary']}" \
+               f"\nДата публикации {vacancies[1]['created_at']}\nСсылка {vacancies[1]['url']}\n"
+    second_vc = f"Вакансия {vacancies[2]['name']}\nЗарплата {vacancies[2]['salary']}" \
+                f"\nДата публикации {vacancies[1]['created_at']}\nСсылка {vacancies[2]['url']}\n"
+    third_vc = f"Вакансия {vacancies[3]['name']}\nЗарплата {vacancies[3]['salary']}" \
+               f"\nДата публикации {vacancies[1]['created_at']}\nСсылка {vacancies[3]['url']}\n"
 
     await message.answer(first_vc)
     await message.answer(second_vc)
     await message.answer(third_vc)
 
-# Этот хэндлер будет срабатывать на команду "/vacancy"
-@dp.message(Command(commands=['exchange']))    # реакция на команду exchange - курс валют
-async def get_vacancy_command(message: Message):
+# Этот хэндлер будет срабатывать на команду "/exchange_rates"
+@dp.message(Command(commands=['course']))    # реакция на команду - курс валют
+async def get_course_command(message: Message):
     exchange = course()
-    first_ex = f"Цифр.код{exchange[1]['code_num']}\nБукв.код{exchange[1]['code_list']}" \
-               f"\nВалюта{exchange[1]['name_rate']}\nЕденицы{exchange[1]['counte_rate']}" \
-               f"\nКурс{exchange[1]['prise_rate']}"
+    row_dict = f"Цифр.код': code[0],Букв.код': code[1],'Валюта': new_row[1],'Кол-во едениц': new_row[2].strip(' ')," \
+               f"'Курс': new_row[4]}"
+    
+    # first_ex = f"Цифр.код{}\nБукв.код{'code_lit'}\nВалюта{'name_rate'}" \
+    #            f"\nЕденицы{'counte_rate'}\nКурс{'prise_rate'}"
+
+    # first_ex = f"Цифр.код{exchange[1]['code_num']}\nБукв.код{exchange[1]['code_list']}" \
+    #            f"\nВалюта{exchange[1]['name_rate']}\nЕденицы{exchange[1]['counte_rate']}" \
+    #            f"\nКурс{exchange[1]['prise_rate']}"
 
     await message.answer(first_ex)
 
