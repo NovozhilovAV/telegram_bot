@@ -29,7 +29,7 @@ async def process_help_command(message: Message):
 async def get_weather_command(message: Message):
     weather = get_weather_spb()
     date = weather[0]
-    night = f'\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}\n'
+    night = f'\n\n{weather[2]["weather_day"]} {weather[2]["temperature"]}, {weather[2]["tooltip"]}\n'
     morning = f'\n{weather[3]["weather_day"]} {weather[3]["temperature"]}, {weather[3]["tooltip"]}\n'
     day = f'\n{weather[4]["weather_day"]} {weather[4]["temperature"]}, {weather[4]["tooltip"]}\n'
     evening = f'\n{weather[5]["weather_day"]} {weather[5]["temperature"]}, {weather[5]["tooltip"]}\n'
